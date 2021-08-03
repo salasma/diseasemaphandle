@@ -41,7 +41,18 @@ Looking for a section? search:
 ****************** */
 
 app.get('/',function(req,res){
-	res.render('home');
+	var callbackCount = 0;
+	var context = {};
+	var mysql = req.app.get('mysql');
+	getColdThisState(res, mysql, context, stateID, complete);
+	getFlueThisState(res, mysql, context, stateID, complete);
+	getFPThisState(res, mysql, context, stateID, complete);
+	function complete(){
+		callbackCount++;
+		if(callbackCount >= 3){
+			res.render('home', context);
+		}
+	}
 });
 
 app.get('/profile', (req, res) => {
