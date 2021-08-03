@@ -15164,6 +15164,9 @@ window.jQuery = window.$ = jQuery;
 	        .animate({backgroundColor: '#ddd'}, 1000);
 	    }
 	  });
+	  $('#map2').on('usmap<event>MD', function(event, data) {
+  	console.log('You clicked on the state of Maryland');
+});
 	  
 	  $('#over-md').click(function(event){
 	    $('#map').usmap('trigger', 'MD', 'mouseover', event);
